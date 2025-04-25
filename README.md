@@ -54,3 +54,28 @@ Para los casos propuestos ocurre lo siguiente:
 Según los resultados de las pruebas unitarias anterories, concluimos que el método actual si detecta cadenas palíndromas, pero, las cadenas al tener espacios, símbolos, tildes, entardas numéricas, entre otras cosas, ya no las detecta como palíndromas.
 
 Por lo tanto, las mejoras serían que dentro de las cadenas, se pudiesen eliminar los espacios y los símbolos para que el método solo analice los caracteres númericos y alfabéticos.
+El nuevo codigo mejorado quedaria asi:
+```
+public class Palindromo {
+    public static void main(String[] args) {}
+
+    public boolean esPalindromo(String cadena) {
+        if (cadena == null || cadena.length() == 0) {
+            throw new IllegalArgumentException("La cadena no puede ser nula");
+            }
+        String cleaned = cadena.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        int left = 0, right = cleaned.length() - 1;
+
+        while (left <= right) {
+            if (cleaned.charAt(left) != cleaned.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+        }
+
+}
+```
+
